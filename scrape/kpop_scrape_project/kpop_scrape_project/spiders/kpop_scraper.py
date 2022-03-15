@@ -1,4 +1,6 @@
+import json
 from re import A
+from textwrap import indent
 from tokenize import group
 import scrapy
 
@@ -8,6 +10,7 @@ class IdolSpider(scrapy.Spider):
     start_urls = ['https://dbkpop.com/db/all-k-pop-idols']
 
     def parse(self, response):
+        arr = []
         for row in response.css('tr')[2:]:
 
             data = [td.css('a::attr(href)').get() if td.css(
@@ -41,15 +44,21 @@ class IdolSpider(scrapy.Spider):
 
             if person_info['Twitter'] == "https:/www.twitter.com/":
                 person_info['Twitter'] = None
+            
+            arr.append(person_info)
 
-            yield person_info
+        print(f"============={len(arr)}============")
+        with open("../../../asset/idol.json", "w", encoding="utf8") as f:
+            json.dump(arr, f, indent=4)
+
 
 
 class BoyGroupSpider(scrapy.Spider):
     name = 'boy-group'
     start_urls = ['https://dbkpop.com/db/k-pop-boybands']
-
+    
     def parse(self, response):
+        arr = []
         for row in response.css('tr')[1:]:
             data = [td.css('a::attr(href)').get() if td.css(
                 'a') else td.css('td::text').get() for td in row.css('td')]
@@ -67,8 +76,11 @@ class BoyGroupSpider(scrapy.Spider):
                 'Active',
             ]
             group_info = {k: data[i] for i, k in enumerate(col)}
-
-            yield group_info
+            arr.append(group_info)
+        
+        print(f"============={len(arr)}============")
+        with open("../../../asset/boy-group.json", "w", encoding="utf8") as f:
+            json.dump(arr, f, indent=4)
 
 
 class GirlGroupSpider(scrapy.Spider):
@@ -76,6 +88,7 @@ class GirlGroupSpider(scrapy.Spider):
     start_urls = ['https://dbkpop.com/db/k-pop-girlgroups']
 
     def parse(self, response):
+        arr = []
         for row in response.css('tr')[1:]:
             data = [td.css('a::attr(href)').get() if td.css(
                 'a') else td.css('td::text').get() for td in row.css('td')]
@@ -93,30 +106,38 @@ class GirlGroupSpider(scrapy.Spider):
                 'Active',
             ]
             group_info = {k: data[i] for i, k in enumerate(col)}
+            arr.append(group_info)
+        
+        print(f"============={len(arr)}============")
+        with open("../../../asset/girl-group.json", "w", encoding="utf8") as f:
+            json.dump(arr, f, indent=4) 
 
-            yield group_info
+# # Below code have been replaced by Selenium code.
+# class SongSpider(scrapy.Spider):
+#     name = 'songs'
+#     start_urls = ['https://dbkpop.com/db/k-pop-music-videos']
 
+#     def parse(self, response):
+#         arr = []
+#         for row in response.css('tr')[2:]:
+#             data = [td.css('a::attr(href)').get() if td.css(
+#                 'a') else td.css('td::text').get() for td in row.css('td')]
 
-class SongSpider(scrapy.Spider):
-    name = 'songs'
-    start_urls = ['https://dbkpop.com/db/k-pop-music-videos']
+#             col = [
+#                 'Post',
+#                 'Date',
+#                 'Artist',
+#                 'Song Name',
+#                 'Korean name',
+#                 'Director',
+#                 'Video',
+#                 'Type',
+#                 'Release'
+#             ]
+#             song_info = {k: data[i] for i, k in enumerate(col)}
 
-    def parse(self, response):
-        for row in response.css('tr')[2:]:
-            data = [td.css('a::attr(href)').get() if td.css(
-                'a') else td.css('td::text').get() for td in row.css('td')]
-
-            col = [
-                'Post',
-                'Date',
-                'Artist',
-                'Song Name',
-                'Korean name',
-                'Director',
-                'Video',
-                'Type',
-                'Release'
-            ]
-            song_info = {k: data[i] for i, k in enumerate(col)}
-
-            yield song_info
+#             arr.append(song_info)
+        
+#         print(f"============={len(arr)}============")
+#         with open("songs.json", "w", encoding="utf8") as f:
+#             json.dump(arr, f, indent=4)

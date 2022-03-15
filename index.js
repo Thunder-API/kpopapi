@@ -14,10 +14,10 @@ const port = 8000;
 //     console.log(res)
 // })
 
-
+// GET: Songs
 app.get("/songs", (req, res) => {
     let spawn = require("child_process").spawn;
-    let process = spawn("./scrape/env-kpop/bin/python3.8", [
+    let child = spawn("./scrape/env-kpop/bin/python3.8", [
         "./scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py",
     ]);
     res.send("Hello!");
@@ -26,11 +26,29 @@ app.get("/songs", (req, res) => {
 // GET: Boy groups
 app.get("/boy-groups", (req, res) => {
     let spawn = require("child_process").spawn;
-    let process = spawn("./scrape/env-kpop/bin/python3.8", [
-        "./scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py",
-    ]);
-    res.send("done!");
+
+    let child = spawn(
+        "../../env-kpop/bin/scrapy",
+        ["crawl", "boy-group", ],
+        {
+            cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
+        }
+    ).on('error', (d) => {
+        console.log(d.toString());
+    })
+
+    child.stdout.on("data", (d) => {
+        console.log(d.toString())
+    })
+
+    res.send("DAATTAAA");
 });
+
+// GET: Girl groups
+
+// GET: Random
+
+// GET: `
 
 app.listen(port, () => {
     console.log(`App running in ${port}`);
