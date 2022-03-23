@@ -89,6 +89,19 @@ const toTitleCase = (phrase) => {
         .join(" ");
 };
 
+const createResObjFormat = ({
+    statusResult = "success",
+    statusMessage = "Data fetched successfully",
+    data = [],
+} = {}) => {
+    return {
+        status: statusResult,
+        message: statusMessage,
+        data: data,
+        count: data.length,
+    };
+};
+
 ////////////////////////////////////////////////////////////////////////
 /////////////////////////////// REST API ///////////////////////////////
 
@@ -109,29 +122,37 @@ app.get("/idols", (req, res) => {
 
     // 400 Bad Request checking
     if (!(by in dataJSON[0])) {
-        res.status(400);
-        return res.json({
-            error: "Please input correct 'by' value after checking the document :)",
-        });
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    'Invalid value of "by". Please check "by" after checking the document :)',
+            })
+        );
     }
     if (offset < 0 || limit < 0) {
-        res.status(400);
-        return res.json({
-            error: "Negative values aren't accepted for offset and limit :(",
-        });
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    "Negative values aren't accepted for offset and limit :(",
+            })
+        );
     }
 
     // Filter the data to send
     const resData = dataJSON.filter((song) => {
         return song[by].toLowerCase().includes(q);
     });
-
+    1;
     // Calculate Offset, Limit
     let start = offset < resData.length ? offset : resData.length;
     let end = offset + limit > resData.length ? resData.length : offset + limit;
 
     // Send the Data
-    res.send(resData.slice(start, end));
+    res.status(200).json(
+        createResObjFormat({ data: resData.slice(start, end) })
+    );
 });
 
 // GET: Random Girl Groups
@@ -139,28 +160,157 @@ app.get("/idols/random", (req, res) => {
     const queryData = req.query;
     const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    res.send(getRandom(idolJSON, count));
+    if (count < 0) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Count can't be below 0",
+            })
+        );
+    }
+
+    // Send the Data
+    res.status(200).json(
+        createResObjFormat({ data: getRandom(idolJSON, count) })
+    );
 });
 
 // GET: Birthdays
 app.get("/idols/birthday", (req, res) => {
     const queryData = req.query;
-    const month = queryData.month;
+    const requestedMonth = parseInt(queryData.month);
+    const dataJSON = idolJSON;
+
+    const birthdayJSON = dataJSON.filter((obj) => {
+        birthString = obj["Date of Birth"];
+        if (birthString) {
+            const month = parseInt(birthString.split("-")[1]);
+            return month === requestedMonth;
+        }
+    });
+
+    console.log(birthdayJSON);
+
+    res.send("sdklfjsdfkl");
 });
 
 // GET: Boy groups
 app.get("/boy-groups", (req, res) => {
+    // Parsing the given parameters
     const queryData = req.query;
-    const count = queryData.count ? parseInt(queryData.count) : 1;
+    const dataJSON = boyGroupJSON;
 
-    res.send(getRandom(boyGroupJSON, count));
+    const by = queryData.by ? toTitleCase(queryData.by) : "Group Name";
+    const q = queryData.q ? queryData.q.toLowerCase() : "";
+    const offset = queryData.offset ? parseInt(queryData.offset) : 0;
+    const limit =
+        parseInt(queryData.limit) &&
+        parseInt(queryData.limit) <= dataJSON.length
+            ? parseInt(queryData.limit)
+            : dataJSON.length;
+
+    // 400 Bad Request checking
+    if (!(by in dataJSON[0])) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    'Invalid value of "by". Please check "by" after checking the document :)',
+            })
+        );
+    }
+    if (offset < 0 || limit < 0) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    "Negative values aren't accepted for offset and limit :(",
+            })
+        );
+    }
+
+    // Filter the data to send
+    const resData = dataJSON.filter((obj) => {
+        return obj[by].toLowerCase().includes(q);
+    });
+
+    // Calculate Offset, Limit
+    let start = offset < resData.length ? offset : resData.length;
+    let end = offset + limit > resData.length ? resData.length : offset + limit;
+
+    // Send the Data
+    res.status(200).json(
+        createResObjFormat({ data: resData.slice(start, end) })
+    );
 });
 
 // GET: Random Boy Groups
+app.get("/boy-groups/random", (req, res) => {
+    const queryData = req.query;
+    const count = queryData.count ? parseInt(queryData.count) : 1;
+
+    if (count < 0) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Count can't be below 0",
+            })
+        );
+    }
+
+    // Send the Data
+    res.status(200).json(
+        createResObjFormat({ data: getRandom(idolJSON, count) })
+    );
+});
 
 // GET: Girl groups
 app.get("/girl-groups", (req, res) => {
-    res.send(girlGroupJSON);
+    // Parsing the given parameters
+    const queryData = req.query;
+    const dataJSON = girlGroupJSON;
+
+    const by = queryData.by ? toTitleCase(queryData.by) : "Group Name";
+    const q = queryData.q ? queryData.q.toLowerCase() : "";
+    const offset = queryData.offset ? parseInt(queryData.offset) : 0;
+    const limit =
+        parseInt(queryData.limit) &&
+        parseInt(queryData.limit) <= dataJSON.length
+            ? parseInt(queryData.limit)
+            : dataJSON.length;
+
+    // 400 Bad Request checking
+    if (!(by in dataJSON[0])) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    'Invalid value of "by". Please check "by" after checking the document :)',
+            })
+        );
+    }
+    if (offset < 0 || limit < 0) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    "Negative values aren't accepted for offset and limit :(",
+            })
+        );
+    }
+    // Filter the data to send
+    const resData = dataJSON.filter((obj) => {
+        return obj[by].toLowerCase().includes(q);
+    });
+
+    // Calculate Offset, Limit
+    let start = offset < resData.length ? offset : resData.length;
+    let end = offset + limit > resData.length ? resData.length : offset + limit;
+
+    // Send the Data
+    res.status(200).json(
+        createResObjFormat({ data: resData.slice(start, end) })
+    );
 });
 
 // GET: Random Girl Groups
@@ -168,13 +318,27 @@ app.get("/girl-groups/random", (req, res) => {
     const queryData = req.query;
     const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    res.send(getRandom(girlGroupJSON, count));
+    if (count < 0) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Count can't be below 0",
+            })
+        );
+    }
+
+
+    // Send the Data
+    res.status(200).json(
+        createResObjFormat({ data: getRandom(idolJSON, count) })
+    );
 });
 
 // GET: Songs
 app.get("/songs", (req, res) => {
     // Parsing the given parameters
     const queryData = req.query;
+    const dataJSON = songJSON;
 
     const by = queryData.by ? toTitleCase(queryData.by) : "Song Name";
     const q = queryData.q ? queryData.q.toLowerCase() : "";
@@ -186,19 +350,24 @@ app.get("/songs", (req, res) => {
             : songJSON.length;
 
     // 400 Bad Request checking
-    if (!(by in songJSON[0])) {
-        res.status(400);
-        return res.json({
-            error: "Please input correct 'by' value after checking the document :)",
-        });
+    if (!(by in dataJSON[0])) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    'Invalid value of "by". Please check "by" after checking the document :)',
+            })
+        );
     }
     if (offset < 0 || limit < 0) {
-        res.status(400);
-        return res.json({
-            error: "Negative values aren't accepted for offset and limit :(",
-        });
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage:
+                    "Negative values aren't accepted for offset and limit :(",
+            })
+        );
     }
-
     // Filter the data to send
     const resData = songJSON.filter((song) => {
         return song[by].toLowerCase().includes(q);
@@ -209,7 +378,9 @@ app.get("/songs", (req, res) => {
     let end = offset + limit > resData.length ? resData.length : offset + limit;
 
     // Send the Data
-    res.send(resData.slice(start, end));
+    res.status(200).json(
+        createResObjFormat({ data: resData.slice(start, end) })
+    );
 });
 
 // GET: Random songs (Single & Multiple)
@@ -217,7 +388,19 @@ app.get("/songs/random", (req, res) => {
     const queryData = req.query;
     const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    res.send(getRandom(songJSON, count));
+    if (count < 0) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Count can't be below 0",
+            })
+        );
+    }
+
+    // Send the Data
+    res.status(200).json(
+        createResObjFormat({ data: getRandom(idolJSON, count) })
+    );
 });
 
 // Express app Listening to Port
