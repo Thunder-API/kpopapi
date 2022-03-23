@@ -1,25 +1,29 @@
 {
-  "name": "kpopapi",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PricelessCode/kpopapi.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PricelessCode/kpopapi/issues"
-  },
-  "homepage": "https://github.com/PricelessCode/kpopapi#readme",
-  "dependencies": {
-    "express": "^4.17.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+    "name": "kpopapi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PricelessCode/kpopapi.git"
+    },
+    "author": "Seungho Lee",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/PricelessCode/kpopapi/issues"
+    },
+    "homepage": "https://github.com/PricelessCode/kpopapi#readme",
+    "dependencies": {
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "engines": {
+        "node": "16.x"
+    }
 }
