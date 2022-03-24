@@ -176,11 +176,19 @@ app.get("/idols/random", (req, res) => {
 });
 
 // GET: Birthdays
-app.get("/idols/birthday", (req, res) => {
+app.get("/idols/birthdays", (req, res) => {
     const queryData = req.query;
     const requestedMonth = parseInt(queryData.month);
     const dataJSON = idolJSON;
 
+    if (![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(requestedMonth)) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Please pick correct month (1 ~ 12)",
+            })
+        );
+    }
     const birthdayJSON = dataJSON.filter((obj) => {
         birthString = obj["Date of Birth"];
         if (birthString) {
@@ -189,9 +197,8 @@ app.get("/idols/birthday", (req, res) => {
         }
     });
 
-    console.log(birthdayJSON);
-
-    res.send("sdklfjsdfkl");
+    // Send the Data
+    res.status(200).json(createResObjFormat({ data: birthdayJSON }));
 });
 
 // GET: Boy groups
@@ -326,7 +333,6 @@ app.get("/girl-groups/random", (req, res) => {
             })
         );
     }
-
 
     // Send the Data
     res.status(200).json(
