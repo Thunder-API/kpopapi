@@ -183,31 +183,31 @@ app.get("/idols/random", (req, res) => {
     res.status(200).json(createResObjFormat({ data: getRandom(idolJSON, 1) }));
 });
 
-// GET: Birthdays
-app.get("/idols/birthdays", (req, res) => {
-    const queryData = req.query;
-    const requestedMonth = parseInt(queryData.month);
-    const dataJSON = idolJSON;
+// // GET: Birthdays
+// app.get("/idols/birthdays", (req, res) => {
+//     const queryData = req.query;
+//     const requestedMonth = parseInt(queryData.month);
+//     const dataJSON = idolJSON;
 
-    if (![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(requestedMonth)) {
-        res.status(400).json(
-            createResObjFormat({
-                statusResult: "error",
-                statusMessage: "Please pick correct month (1 ~ 12)",
-            })
-        );
-    }
-    const birthdayJSON = dataJSON.filter((obj) => {
-        birthString = obj["Date of Birth"];
-        if (birthString) {
-            const month = parseInt(birthString.split("-")[1]);
-            return month === requestedMonth;
-        }
-    });
+//     if (![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(requestedMonth)) {
+//         res.status(400).json(
+//             createResObjFormat({
+//                 statusResult: "error",
+//                 statusMessage: "Please pick correct month (1 ~ 12)",
+//             })
+//         );
+//     }
+//     const birthdayJSON = dataJSON.filter((obj) => {
+//         birthString = obj["Date of Birth"];
+//         if (birthString) {
+//             const month = parseInt(birthString.split("-")[1]);
+//             return month === requestedMonth;
+//         }
+//     });
 
-    // Send the Data
-    res.status(200).json(createResObjFormat({ data: birthdayJSON }));
-});
+//     // Send the Data
+//     res.status(200).json(createResObjFormat({ data: birthdayJSON }));
+// });
 
 // GET: Boy groups
 app.get("/boy-groups", (req, res) => {
