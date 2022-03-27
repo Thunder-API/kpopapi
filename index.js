@@ -120,6 +120,16 @@ app.get("/idols", (req, res) => {
             ? parseInt(queryData.limit)
             : dataJSON.length;
 
+    // 400 Bad Request Checking
+    if (!q) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Parameter 'q' is a required. :)",
+            })
+        );
+    }
+
     // 400 Bad Request checking
     if (!(by in dataJSON[0])) {
         res.status(400).json(
@@ -158,21 +168,19 @@ app.get("/idols", (req, res) => {
 // GET: Random Girl Groups
 app.get("/idols/random", (req, res) => {
     const queryData = req.query;
-    const count = queryData.count ? parseInt(queryData.count) : 1;
+    // const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    if (count < 0) {
-        res.status(400).json(
-            createResObjFormat({
-                statusResult: "error",
-                statusMessage: "Count can't be below 0",
-            })
-        );
-    }
+    // if (count < 0) {
+    //     res.status(400).json(
+    //         createResObjFormat({
+    //             statusResult: "error",
+    //             statusMessage: "Count can't be below 0",
+    //         })
+    //     );
+    // }
 
     // Send the Data
-    res.status(200).json(
-        createResObjFormat({ data: getRandom(idolJSON, count) })
-    );
+    res.status(200).json(createResObjFormat({ data: getRandom(idolJSON, 1) }));
 });
 
 // GET: Birthdays
@@ -216,6 +224,16 @@ app.get("/boy-groups", (req, res) => {
             ? parseInt(queryData.limit)
             : dataJSON.length;
 
+    // 400 Bad Request Checking
+    if (!q) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Parameter 'q' is a required. :)",
+            })
+        );
+    }
+
     // 400 Bad Request checking
     if (!(by in dataJSON[0])) {
         res.status(400).json(
@@ -254,21 +272,19 @@ app.get("/boy-groups", (req, res) => {
 // GET: Random Boy Groups
 app.get("/boy-groups/random", (req, res) => {
     const queryData = req.query;
-    const count = queryData.count ? parseInt(queryData.count) : 1;
+    // const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    if (count < 0) {
-        res.status(400).json(
-            createResObjFormat({
-                statusResult: "error",
-                statusMessage: "Count can't be below 0",
-            })
-        );
-    }
+    // if (count < 0) {
+    //     res.status(400).json(
+    //         createResObjFormat({
+    //             statusResult: "error",
+    //             statusMessage: "Count can't be below 0",
+    //         })
+    //     );
+    // }
 
     // Send the Data
-    res.status(200).json(
-        createResObjFormat({ data: getRandom(idolJSON, count) })
-    );
+    res.status(200).json(createResObjFormat({ data: getRandom(boyGroupJSON, 1) }));
 });
 
 // GET: Girl groups
@@ -285,6 +301,16 @@ app.get("/girl-groups", (req, res) => {
         parseInt(queryData.limit) <= dataJSON.length
             ? parseInt(queryData.limit)
             : dataJSON.length;
+
+    // 400 Bad Request Checking
+    if (!q) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Parameter 'q' is a required. :)",
+            })
+        );
+    }
 
     // 400 Bad Request checking
     if (!(by in dataJSON[0])) {
@@ -323,21 +349,19 @@ app.get("/girl-groups", (req, res) => {
 // GET: Random Girl Groups
 app.get("/girl-groups/random", (req, res) => {
     const queryData = req.query;
-    const count = queryData.count ? parseInt(queryData.count) : 1;
+    // const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    if (count < 0) {
-        res.status(400).json(
-            createResObjFormat({
-                statusResult: "error",
-                statusMessage: "Count can't be below 0",
-            })
-        );
-    }
+    // if (count < 0) {
+    //     res.status(400).json(
+    //         createResObjFormat({
+    //             statusResult: "error",
+    //             statusMessage: "Count can't be below 0",
+    //         })
+    //     );
+    // }
 
     // Send the Data
-    res.status(200).json(
-        createResObjFormat({ data: getRandom(idolJSON, count) })
-    );
+    res.status(200).json(createResObjFormat({ data: getRandom(girlGroupJSON, 1) }));
 });
 
 // GET: Songs
@@ -354,6 +378,16 @@ app.get("/songs", (req, res) => {
         parseInt(queryData.limit) <= songJSON.length
             ? parseInt(queryData.limit)
             : songJSON.length;
+
+    // 400 Bad Request Checking
+    if (!q) {
+        res.status(400).json(
+            createResObjFormat({
+                statusResult: "error",
+                statusMessage: "Parameter 'q' is a required. :)",
+            })
+        );
+    }
 
     // 400 Bad Request checking
     if (!(by in dataJSON[0])) {
@@ -391,21 +425,21 @@ app.get("/songs", (req, res) => {
 
 // GET: Random songs (Single & Multiple)
 app.get("/songs/random", (req, res) => {
-    const queryData = req.query;
-    const count = queryData.count ? parseInt(queryData.count) : 1;
+    // const queryData = req.query;
+    // const count = queryData.count ? parseInt(queryData.count) : 1;
 
-    if (count < 0) {
-        res.status(400).json(
-            createResObjFormat({
-                statusResult: "error",
-                statusMessage: "Count can't be below 0",
-            })
-        );
-    }
+    // if (count < 0) {
+    //     res.status(400).json(
+    //         createResObjFormat({
+    //             statusResult: "error",
+    //             statusMessage: "Count can't be below 0",
+    //         })
+    //     );
+    // }
 
     // Send the Data
     res.status(200).json(
-        createResObjFormat({ data: getRandom(idolJSON, count) })
+        createResObjFormat({ data: getRandom(songJSON, 1) })
     );
 });
 
