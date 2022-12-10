@@ -3,8 +3,11 @@ const spawn = require("child_process").spawn;
 const app = express();
 const port = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
+const cors = require('cors')
 
 app.use(bodyParser.json());
+app.use(cors());
+
 
 // Local data files
 const songJSON = require("./asset/songs-data.json");
