@@ -48,7 +48,7 @@ class IdolSpider(scrapy.Spider):
             arr.append(person_info)
 
         print(f"============={len(arr)}============")
-        with open("../../../asset/idol.json", "w", encoding="utf8") as f:
+        with open("../../asset/idol.json", "w", encoding="utf8") as f:
             json.dump(arr, f, indent=4)
 
 
@@ -79,7 +79,8 @@ class BoyGroupSpider(scrapy.Spider):
             arr.append(group_info)
         
         print(f"============={len(arr)}============")
-        with open("../../../asset/boy-group.json", "w", encoding="utf8") as f:
+        print(arr)
+        with open("../../asset/boy-group.json", "w", encoding="utf8") as f:
             json.dump(arr, f, indent=4)
 
 
@@ -109,35 +110,5 @@ class GirlGroupSpider(scrapy.Spider):
             arr.append(group_info)
         
         print(f"============={len(arr)}============")
-        with open("../../../asset/girl-group.json", "w", encoding="utf8") as f:
+        with open("../../asset/girl-group.json", "w", encoding="utf8") as f:
             json.dump(arr, f, indent=4) 
-
-# # Below code have been replaced by Selenium code.
-# class SongSpider(scrapy.Spider):
-#     name = 'songs'
-#     start_urls = ['https://dbkpop.com/db/k-pop-music-videos']
-
-#     def parse(self, response):
-#         arr = []
-#         for row in response.css('tr')[2:]:
-#             data = [td.css('a::attr(href)').get() if td.css(
-#                 'a') else td.css('td::text').get() for td in row.css('td')]
-
-#             col = [
-#                 'Post',
-#                 'Date',
-#                 'Artist',
-#                 'Song Name',
-#                 'Korean name',
-#                 'Director',
-#                 'Video',
-#                 'Type',
-#                 'Release'
-#             ]
-#             song_info = {k: data[i] for i, k in enumerate(col)}
-
-#             arr.append(song_info)
-        
-#         print(f"============={len(arr)}============")
-#         with open("songs.json", "w", encoding="utf8") as f:
-#             json.dump(arr, f, indent=4)

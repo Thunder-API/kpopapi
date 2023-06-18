@@ -62,5 +62,5 @@ for row in driver.find_elements(By.CSS_SELECTOR, '#table_1 tr')[2:]:
     song_data.append(parsed_song_info)
 
 # Write JSON file
-with open('../../asset/songs-data.json', 'w', encoding='utf8') as f:
+with open('../../../asset/songs-data.json', 'w', encoding='utf8') as f:
     json.dump(song_data, f, indent=4, ensure_ascii=True)
