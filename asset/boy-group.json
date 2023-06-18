@@ -1,6 +1,6 @@
 [
     {
-        "Group Profile": null,
+        "Group Profile": "https://dbkpop.com/group/bigbang/",
         "Group Name": "BIGBANG",
         "Short Group Name": null,
         "Korean Name": "\ube45\ubc45",
@@ -162,7 +162,7 @@
         "Korean Name": "\ube45\uc2a4",
         "Date of Debut": "2012-05-24",
         "Company": "Jellyfish",
-        "Members": "5",
+        "Members": "4",
         "Orginal Members": "6",
         "Fanclub Name": "Starlight",
         "Active": "Yes"
@@ -690,7 +690,7 @@
         "Korean Name": "\uc544\uc2a4\ud2b8\ub85c",
         "Date of Debut": "2016-02-23",
         "Company": "Fantagio",
-        "Members": "6",
+        "Members": "4",
         "Orginal Members": "6",
         "Fanclub Name": "AROHA",
         "Active": "Yes"
@@ -717,7 +717,7 @@
         "Members": "6",
         "Orginal Members": "6",
         "Fanclub Name": "Swing",
-        "Active": "Yes"
+        "Active": "No"
     },
     {
         "Group Profile": null,
@@ -768,7 +768,7 @@
         "Active": "Hiatus"
     },
     {
-        "Group Profile": null,
+        "Group Profile": "https://dbkpop.com/group/up10tion/",
         "Group Name": "UP10TION",
         "Short Group Name": null,
         "Korean Name": "\uc5c5\ud150\uc158",
@@ -786,7 +786,7 @@
         "Korean Name": "\ube45\ud1a4",
         "Date of Debut": "2016-11-09",
         "Company": "Plan A",
-        "Members": "7",
+        "Members": "6",
         "Orginal Members": "7",
         "Fanclub Name": "Alice",
         "Active": "Yes"
@@ -1050,7 +1050,7 @@
         "Korean Name": "\uc5e0\ube0c\uc774\ud53c",
         "Date of Debut": "2017-03-13",
         "Company": "PH",
-        "Members": "7",
+        "Members": "6",
         "Orginal Members": "7",
         "Fanclub Name": null,
         "Active": "Yes"
@@ -1065,7 +1065,7 @@
         "Members": "10",
         "Orginal Members": "10",
         "Fanclub Name": null,
-        "Active": "Yes"
+        "Active": "No"
     },
     {
         "Group Profile": null,
@@ -1156,11 +1156,11 @@
         "Group Name": "Stray Kids",
         "Short Group Name": "SKZ",
         "Korean Name": "\uc2a4\ud2b8\ub808\uc774 \ud0a4\uc988",
-        "Date of Debut": "2018-03-26",
+        "Date of Debut": "2018-03-25",
         "Company": "JYP",
         "Members": "8",
         "Orginal Members": "9",
-        "Fanclub Name": null,
+        "Fanclub Name": "STAY",
         "Active": "Yes"
     },
     {
@@ -1230,7 +1230,7 @@
         "Korean Name": "\uc6d0\uc5b4\uc2a4",
         "Date of Debut": "2019-01-09",
         "Company": "RBW",
-        "Members": "6",
+        "Members": "5",
         "Orginal Members": "6",
         "Fanclub Name": null,
         "Active": "Yes"
@@ -1393,12 +1393,12 @@
     },
     {
         "Group Profile": "https://dbkpop.com/group/in2it/",
-        "Group Name": "IN2IT",
-        "Short Group Name": null,
-        "Korean Name": "\uc778\ud22c\uc787",
+        "Group Name": "SKYE",
+        "Short Group Name": "IN2IT",
+        "Korean Name": "\uc2a4\uce74\uc774",
         "Date of Debut": "2017-10-26",
         "Company": "MMO",
-        "Members": "7",
+        "Members": "6",
         "Orginal Members": "8",
         "Fanclub Name": null,
         "Active": "Yes"
@@ -1812,7 +1812,7 @@
         "Active": "Yes"
     },
     {
-        "Group Profile": null,
+        "Group Profile": "https://dbkpop.com/group/onlyoneof/",
         "Group Name": "OnlyOneOf",
         "Short Group Name": null,
         "Korean Name": "\uc628\ub9ac\uc6d0\uc624\ube0c",
@@ -1881,7 +1881,7 @@
         "Members": "5",
         "Orginal Members": "5",
         "Fanclub Name": null,
-        "Active": "Yes"
+        "Active": "No"
     },
     {
         "Group Profile": "https://dbkpop.com/group/too",
@@ -1956,7 +1956,7 @@
         "Active": "Yes"
     },
     {
-        "Group Profile": null,
+        "Group Profile": "https://dbkpop.com/group/d1ce/",
         "Group Name": "D1CE",
         "Short Group Name": null,
         "Korean Name": "\ub514\uc6d0\uc2a4",
@@ -2004,7 +2004,7 @@
         "Active": "No"
     },
     {
-        "Group Profile": null,
+        "Group Profile": "https://dbkpop.com/group/vanner/",
         "Group Name": "VANNER",
         "Short Group Name": null,
         "Korean Name": "\ubc30\ub108",
@@ -2119,7 +2119,7 @@
         "Date of Debut": "2021-02-18",
         "Company": "GF",
         "Members": "7",
-        "Orginal Members": "7",
+        "Orginal Members": "8",
         "Fanclub Name": "Kingmakers",
         "Active": "Yes"
     },
@@ -2137,9 +2137,9 @@
     },
     {
         "Group Profile": "https://dbkpop.com/group/t1419/",
-        "Group Name": "T1419",
-        "Short Group Name": null,
-        "Korean Name": "\ud2f0\uc77c\uc0ac\uc77c\uad6c",
+        "Group Name": "TFN",
+        "Short Group Name": "T1419",
+        "Korean Name": "\ud2f0\uc5d0\ud504\uc564",
         "Date of Debut": "2021-01-11",
         "Company": "MLD",
         "Members": "9",
@@ -2220,7 +2220,7 @@
         "Active": "Yes"
     },
     {
-        "Group Profile": null,
+        "Group Profile": "https://dbkpop.com/group/blitzers/",
         "Group Name": "BLITZERS",
         "Short Group Name": null,
         "Korean Name": "\ube14\ub9ac\ucc98\uc2a4",
@@ -2240,6 +2240,282 @@
         "Company": "Pluswin",
         "Members": "4",
         "Orginal Members": "4",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "BLANK2Y",
+        "Short Group Name": null,
+        "Korean Name": "\ube14\ub7ad\ud0a4",
+        "Date of Debut": "2022-05-24",
+        "Company": "Keystone",
+        "Members": "9",
+        "Orginal Members": "9",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": "https://dbkpop.com/group/nine-i/",
+        "Group Name": "NINE.i",
+        "Short Group Name": null,
+        "Korean Name": "\ub098\uc778\uc544\uc774",
+        "Date of Debut": "2022-03-30",
+        "Company": "FirstOne",
+        "Members": "10",
+        "Orginal Members": "10",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "TEMPEST",
+        "Short Group Name": null,
+        "Korean Name": "\ud15c\ud398\uc2a4\ud2b8",
+        "Date of Debut": "2022-03-02",
+        "Company": "Yuehua",
+        "Members": "7",
+        "Orginal Members": "7",
+        "Fanclub Name": "iE",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "TRENDZ",
+        "Short Group Name": null,
+        "Korean Name": "\ud2b8\ub80c\ub4dc\uc9c0",
+        "Date of Debut": "2022-01-05",
+        "Company": "Interpark",
+        "Members": "7",
+        "Orginal Members": "7",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": "https://dbkpop.com/group/younite/",
+        "Group Name": "YOUNITE",
+        "Short Group Name": null,
+        "Korean Name": "\uc720\ub098\uc774\ud2b8",
+        "Date of Debut": "2022-04-20",
+        "Company": "Brand New",
+        "Members": "9",
+        "Orginal Members": "9",
+        "Fanclub Name": "YOUNIZ",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "Xdinary Heroes",
+        "Short Group Name": null,
+        "Korean Name": "\uc5d1\uc2a4\ub514\ub108\ub9ac \ud788\uc5b4\ub85c\uc988",
+        "Date of Debut": "2021-12-06",
+        "Company": "JYP",
+        "Members": "6",
+        "Orginal Members": "6",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": "https://dbkpop.com/group/tnx/",
+        "Group Name": "TNX",
+        "Short Group Name": null,
+        "Korean Name": "\ud2f0\uc5d4\uc5d1\uc2a4",
+        "Date of Debut": "2022-05-17",
+        "Company": "P NATION",
+        "Members": "6",
+        "Orginal Members": "6",
+        "Fanclub Name": "THX",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "SUPERKIND",
+        "Short Group Name": null,
+        "Korean Name": "\uc288\ud37c\uce74\uc778\ub4dc",
+        "Date of Debut": "2022-06-20",
+        "Company": "Deep Studio",
+        "Members": "7",
+        "Orginal Members": "7",
+        "Fanclub Name": "Players",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "ABLUE",
+        "Short Group Name": null,
+        "Korean Name": "\uc5d0\uc774\ube14\ub8e8",
+        "Date of Debut": "2022-10-23",
+        "Company": "J-Star",
+        "Members": "6",
+        "Orginal Members": "6",
+        "Fanclub Name": "BLUEVERY",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": "https://dbkpop.com/group/aimers/",
+        "Group Name": "AIMERS",
+        "Short Group Name": null,
+        "Korean Name": "\uc5d0\uc774\uba38\uc2a4",
+        "Date of Debut": "2022-11-17",
+        "Company": "Hyper Rhythm",
+        "Members": "6",
+        "Orginal Members": "6",
+        "Fanclub Name": "AIMING",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "ATBO",
+        "Short Group Name": null,
+        "Korean Name": "\uc5d0\uc774\ud2f0\ube44\uc624",
+        "Date of Debut": "2022-07-27",
+        "Company": "IST",
+        "Members": "7",
+        "Orginal Members": "7",
+        "Fanclub Name": "BOAT",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "Black Level",
+        "Short Group Name": null,
+        "Korean Name": "\ube14\ub799 \ub808\ubca8",
+        "Date of Debut": "2022-02-26",
+        "Company": "VT",
+        "Members": "2",
+        "Orginal Members": "6",
+        "Fanclub Name": "WE.B",
+        "Active": "Hiatus"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "Jwiiver",
+        "Short Group Name": null,
+        "Korean Name": "\uc81c\uc774\uc704\ubc84",
+        "Date of Debut": "2022-02-17",
+        "Company": "JTG",
+        "Members": "7",
+        "Orginal Members": "7",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "XEED",
+        "Short Group Name": null,
+        "Korean Name": "\uc528\ub4dc",
+        "Date of Debut": "2022-12-01",
+        "Company": "Nature Space",
+        "Members": "3",
+        "Orginal Members": "4",
+        "Fanclub Name": "GREENY",
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": "https://dbkpop.com/group/xikers/",
+        "Group Name": "xikers",
+        "Short Group Name": null,
+        "Korean Name": "\uc2f8\uc774\ucee4\uc2a4",
+        "Date of Debut": "2023-03-30",
+        "Company": "KQ",
+        "Members": "10",
+        "Orginal Members": "10",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "8TURN",
+        "Short Group Name": null,
+        "Korean Name": "\uc5d0\uc787\ud134",
+        "Date of Debut": "2023-01-30",
+        "Company": "MNH",
+        "Members": "8",
+        "Orginal Members": "8",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "BOYNEXTDOOR",
+        "Short Group Name": null,
+        "Korean Name": "\ubcf4\uc774\ub125\uc2a4\ud2b8\ub3c4\uc5b4",
+        "Date of Debut": "2023-05-30",
+        "Company": "KOZ",
+        "Members": "6",
+        "Orginal Members": "6",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "BXB",
+        "Short Group Name": null,
+        "Korean Name": "\ube44\uc5d1\uc2a4\ube44",
+        "Date of Debut": "2023-01-30",
+        "Company": "Wolfburn",
+        "Members": "5",
+        "Orginal Members": "5",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "CMDM",
+        "Short Group Name": null,
+        "Korean Name": "\ucee4\ub9e8\ub354\ub9e8",
+        "Date of Debut": "2023-04-27",
+        "Company": "Command the M",
+        "Members": "6",
+        "Orginal Members": "6",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "HAWW",
+        "Short Group Name": null,
+        "Korean Name": "\ud558\uc6b0",
+        "Date of Debut": "2023-02-23",
+        "Company": "Biscuit",
+        "Members": "7",
+        "Orginal Members": "7",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "WE:A",
+        "Short Group Name": null,
+        "Korean Name": "\uc704\uc544",
+        "Date of Debut": "2023-03-29",
+        "Company": "Madewell",
+        "Members": "4",
+        "Orginal Members": "4",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "WEUS",
+        "Short Group Name": null,
+        "Korean Name": "\uc704\uc5b4\uc2a4",
+        "Date of Debut": "2023-04-03",
+        "Company": "WEUS",
+        "Members": "7",
+        "Orginal Members": "8",
+        "Fanclub Name": null,
+        "Active": "Yes"
+    },
+    {
+        "Group Profile": null,
+        "Group Name": "XODIAC",
+        "Short Group Name": null,
+        "Korean Name": "\uc18c\ub514\uc5d1",
+        "Date of Debut": "2023-03-25",
+        "Company": "One Cool Jacso",
+        "Members": "9",
+        "Orginal Members": "9",
         "Fanclub Name": null,
         "Active": "Yes"
     }

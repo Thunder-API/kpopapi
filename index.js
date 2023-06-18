@@ -3,23 +3,20 @@ const spawn = require("child_process").spawn;
 const app = express();
 const port = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
-const cors = require('cors')
+const cors = require("cors");
 
 app.use(bodyParser.json());
 app.use(cors());
-
 
 // Local data files
 const songJSON = require("./asset/songs-data.json");
 const boyGroupJSON = require("./asset/boy-group.json");
 const girlGroupJSON = require("./asset/girl-group.json");
 const idolJSON = require("./asset/idol.json");
-const res = require("express/lib/response");
-const { query } = require("express");
 
 // Scrape from website: Songs
 const fetchSongs = () => {
-    const child = spawn("./scrape/env-kpop/bin/python3.8", [
+    const child = spawn("./scrape/env-kpop/bin/python3.9", [
         "./scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py",
     ]).on("error", (err) => {
         console.log(
@@ -77,13 +74,24 @@ const fetchIdols = () => {
     });
 };
 
-// Random function for picking
+/**
+ * Util Function to get a random number from 0 to n
+ * @param {*} arr 
+ * @param {*} n 
+ * @returns number
+ */
 const getRandom = (arr, n) => {
     const shuffled = arr.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
 };
 
-// Function for making Title Case
+/**
+ *  Util function to convert a string to Title Case
+ * @param {
+ *
+ * } phrase
+ * @returns string
+ */
 const toTitleCase = (phrase) => {
     return phrase
         .toLowerCase()
@@ -92,6 +100,11 @@ const toTitleCase = (phrase) => {
         .join(" ");
 };
 
+/**
+ * Util function to create a response object
+ * @param {*} param0 
+ * @returns 
+ */
 const createResObjFormat = ({
     statusResult = "success",
     statusMessage = "Data fetched successfully",
@@ -104,6 +117,8 @@ const createResObjFormat = ({
         count: data.length,
     };
 };
+
+fetchBoyGroups();
 
 ////////////////////////////////////////////////////////////////////////
 /////////////////////////////// REST API ///////////////////////////////
@@ -171,46 +186,8 @@ app.get("/idols", (req, res) => {
 // GET: Random Girl Groups
 app.get("/idols/random", (req, res) => {
     const queryData = req.query;
-    // const count = queryData.count ? parseInt(queryData.count) : 1;
-
-    // if (count < 0) {
-    //     res.status(400).json(
-    //         createResObjFormat({
-    //             statusResult: "error",
-    //             statusMessage: "Count can't be below 0",
-    //         })
-    //     );
-    // }
-
-    // Send the Data
     res.status(200).json(createResObjFormat({ data: getRandom(idolJSON, 1) }));
 });
-
-// // GET: Birthdays
-// app.get("/idols/birthdays", (req, res) => {
-//     const queryData = req.query;
-//     const requestedMonth = parseInt(queryData.month);
-//     const dataJSON = idolJSON;
-
-//     if (![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(requestedMonth)) {
-//         res.status(400).json(
-//             createResObjFormat({
-//                 statusResult: "error",
-//                 statusMessage: "Please pick correct month (1 ~ 12)",
-//             })
-//         );
-//     }
-//     const birthdayJSON = dataJSON.filter((obj) => {
-//         birthString = obj["Date of Birth"];
-//         if (birthString) {
-//             const month = parseInt(birthString.split("-")[1]);
-//             return month === requestedMonth;
-//         }
-//     });
-
-//     // Send the Data
-//     res.status(200).json(createResObjFormat({ data: birthdayJSON }));
-// });
 
 // GET: Boy groups
 app.get("/boy-groups", (req, res) => {
@@ -275,19 +252,11 @@ app.get("/boy-groups", (req, res) => {
 // GET: Random Boy Groups
 app.get("/boy-groups/random", (req, res) => {
     const queryData = req.query;
-    // const count = queryData.count ? parseInt(queryData.count) : 1;
-
-    // if (count < 0) {
-    //     res.status(400).json(
-    //         createResObjFormat({
-    //             statusResult: "error",
-    //             statusMessage: "Count can't be below 0",
-    //         })
-    //     );
-    // }
 
     // Send the Data
-    res.status(200).json(createResObjFormat({ data: getRandom(boyGroupJSON, 1) }));
+    res.status(200).json(
+        createResObjFormat({ data: getRandom(boyGroupJSON, 1) })
+    );
 });
 
 // GET: Girl groups
@@ -352,19 +321,11 @@ app.get("/girl-groups", (req, res) => {
 // GET: Random Girl Groups
 app.get("/girl-groups/random", (req, res) => {
     const queryData = req.query;
-    // const count = queryData.count ? parseInt(queryData.count) : 1;
-
-    // if (count < 0) {
-    //     res.status(400).json(
-    //         createResObjFormat({
-    //             statusResult: "error",
-    //             statusMessage: "Count can't be below 0",
-    //         })
-    //     );
-    // }
 
     // Send the Data
-    res.status(200).json(createResObjFormat({ data: getRandom(girlGroupJSON, 1) }));
+    res.status(200).json(
+        createResObjFormat({ data: getRandom(girlGroupJSON, 1) })
+    );
 });
 
 // GET: Songs
@@ -428,22 +389,8 @@ app.get("/songs", (req, res) => {
 
 // GET: Random songs (Single & Multiple)
 app.get("/songs/random", (req, res) => {
-    // const queryData = req.query;
-    // const count = queryData.count ? parseInt(queryData.count) : 1;
-
-    // if (count < 0) {
-    //     res.status(400).json(
-    //         createResObjFormat({
-    //             statusResult: "error",
-    //             statusMessage: "Count can't be below 0",
-    //         })
-    //     );
-    // }
-
     // Send the Data
-    res.status(200).json(
-        createResObjFormat({ data: getRandom(songJSON, 1) })
-    );
+    res.status(200).json(createResObjFormat({ data: getRandom(songJSON, 1) }));
 });
 
 // Express app Listening to Port
