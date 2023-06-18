@@ -14,65 +14,65 @@ const boyGroupJSON = require("./asset/boy-group.json");
 const girlGroupJSON = require("./asset/girl-group.json");
 const idolJSON = require("./asset/idol.json");
 
-// // Scrape from website: Songs
-// const fetchSongs = () => {
-//     const child = spawn("./scrape/env-kpop/bin/python3.9", [
-//         "./scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py",
-//     ]).on("error", (err) => {
-//         console.log(
-//             `Error Creating a child process from Node: ${err.toString()}`
-//         );
-//     });
+// Scrape from website: Songs
+const fetchSongs = () => {
+    const child = spawn("./scrape/env-kpop/bin/python3.9", [
+        "./scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py",
+    ]).on("error", (err) => {
+        console.log(
+            `Error Creating a child process from Node: ${err.toString()}`
+        );
+    });
 
-//     child.stderr.on("data", (data) => {
-//         console.log(`Error from Child process: ${data.toString()}`);
-//     });
-// };
+    child.stderr.on("data", (data) => {
+        console.log(`Error from Child process: ${data.toString()}`);
+    });
+};
 
-// // Scrape from website: Boy Groups
-// const fetchBoyGroups = () => {
-//     const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "boy-group"], {
-//         cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
-//     }).on("error", (d) => {
-//         console.log(
-//             `Error Creating a child process from Node: ${err.toString()}`
-//         );
-//     });
+// Scrape from website: Boy Groups
+const fetchBoyGroups = () => {
+    const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "boy-group"], {
+        cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
+    }).on("error", (d) => {
+        console.log(
+            `Error Creating a child process from Node: ${err.toString()}`
+        );
+    });
 
-//     child.stdout.on("data", (d) => {
-//         console.log(`Error from Child process: ${data.toString()}`);
-//     });
-// };
+    child.stdout.on("data", (d) => {
+        console.log(`Error from Child process: ${data.toString()}`);
+    });
+};
 
-// // Scrape from website: Girl Groups
-// const fetchGirlGroups = () => {
-//     const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "girl-group"], {
-//         cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
-//     }).on("error", (d) => {
-//         console.log(
-//             `Error Creating a child process from Node: ${err.toString()}`
-//         );
-//     });
+// Scrape from website: Girl Groups
+const fetchGirlGroups = () => {
+    const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "girl-group"], {
+        cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
+    }).on("error", (d) => {
+        console.log(
+            `Error Creating a child process from Node: ${err.toString()}`
+        );
+    });
 
-//     child.stdout.on("data", (d) => {
-//         console.log(`Error from Child process: ${data.toString()}`);
-//     });
-// };
+    child.stdout.on("data", (d) => {
+        console.log(`Error from Child process: ${data.toString()}`);
+    });
+};
 
-// // Scrape from website: Idols
-// const fetchIdols = () => {
-//     const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "idol"], {
-//         cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
-//     }).on("error", (d) => {
-//         console.log(
-//             `Error Creating a child process from Node: ${err.toString()}`
-//         );
-//     });
+// Scrape from website: Idols
+const fetchIdols = () => {
+    const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "idol"], {
+        cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
+    }).on("error", (d) => {
+        console.log(
+            `Error Creating a child process from Node: ${err.toString()}`
+        );
+    });
 
-//     child.stdout.on("data", (d) => {
-//         console.log(`Error from Child process: ${data.toString()}`);
-//     });
-// };
+    child.stdout.on("data", (d) => {
+        console.log(`Error from Child process: ${data.toString()}`);
+    });
+};
 
 /**
  * Util Function to get a random number from 0 to n
@@ -118,7 +118,6 @@ const createResObjFormat = ({
     };
 };
 
-fetchBoyGroups();
 
 ////////////////////////////////////////////////////////////////////////
 /////////////////////////////// REST API ///////////////////////////////
