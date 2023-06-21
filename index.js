@@ -4,80 +4,74 @@ const app = express();
 const port = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const schedule = require("node-schedule");
+const path = require("path");
+const fs = require("fs");
 
 app.use(bodyParser.json());
 app.use(cors());
 
 // Local data files
-const songJSON = require("./asset/songs-data.json");
-const boyGroupJSON = require("./asset/boy-group.json");
-const girlGroupJSON = require("./asset/girl-group.json");
-const idolJSON = require("./asset/idol.json");
+let boyGroupJSON = JSON.parse(fs.readFileSync("./asset/boy-group.json"));
+let girlGroupJSON = JSON.parse(fs.readFileSync("./asset/girl-group.json"));
+let idolJSON = JSON.parse(fs.readFileSync("./asset/idol.json"));
+let songJSON = JSON.parse(fs.readFileSync("./asset/songs-data.json"));
 
 // Scrape from website: Songs
-const fetchSongs = () => {
-    const child = spawn("./scrape/env-kpop/bin/python3.9", [
-        "./scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py",
-    ]).on("error", (err) => {
-        console.log(
-            `Error Creating a child process from Node: ${err.toString()}`
-        );
+const scrapeSongs = () => {
+    const pythonEnv = path.join(__dirname, "/scrape/env-kpop/bin/python");
+    const songSeleniumFilePath = path.join(
+        __dirname,
+        "/scrape/kpop_scrape_project/kpop_scrape_project/selenium_songs.py"
+    );
+    const currentPath = path.join(__dirname, "/scrape/kpop_scrape_project/kpop_scrape_project");
+
+    const child = spawn(pythonEnv, [songSeleniumFilePath], {
+        cwd: currentPath
+    });
+
+    child.stdout.on("data", (data) => {
+        console.log(`Data from child: ${data}`);
     });
 
     child.stderr.on("data", (data) => {
-        console.log(`Error from Child process: ${data.toString()}`);
+        console.log(`Error from child: ${data}`);
+    });
+
+    child.on("error", (err) => {
+        console.log(`Error spawning child: ${err}`);
     });
 };
 
 // Scrape from website: Boy Groups
-const fetchBoyGroups = () => {
-    const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "boy-group"], {
-        cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
-    }).on("error", (d) => {
-        console.log(
-            `Error Creating a child process from Node: ${err.toString()}`
-        );
+const scrapeData = (crawlerName) => {
+    const pythonEnv = path.join(__dirname, "/scrape/env-kpop/bin/python");
+    const scrapyPath = path.join(__dirname, "/scrape/env-kpop/bin/scrapy");
+    const projectPath = path.join(__dirname, "/scrape/kpop_scrape_project");
+
+    const child = spawn(pythonEnv, [scrapyPath, "crawl", crawlerName], {
+        cwd: projectPath,
     });
 
-    child.stdout.on("data", (d) => {
-        console.log(`Error from Child process: ${data.toString()}`);
-    });
-};
+    console.log(process.cwd());
 
-// Scrape from website: Girl Groups
-const fetchGirlGroups = () => {
-    const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "girl-group"], {
-        cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
-    }).on("error", (d) => {
-        console.log(
-            `Error Creating a child process from Node: ${err.toString()}`
-        );
+    child.stdout.on("data", (data) => {
+        console.log(`Data from child: ${data}`);
     });
 
-    child.stdout.on("data", (d) => {
-        console.log(`Error from Child process: ${data.toString()}`);
-    });
-};
-
-// Scrape from website: Idols
-const fetchIdols = () => {
-    const child = spawn("../../env-kpop/bin/scrapy", ["crawl", "idol"], {
-        cwd: "./scrape/kpop_scrape_project/kpop_scrape_project",
-    }).on("error", (d) => {
-        console.log(
-            `Error Creating a child process from Node: ${err.toString()}`
-        );
+    child.stderr.on("data", (data) => {
+        console.log(`Error from child: ${data}`);
     });
 
-    child.stdout.on("data", (d) => {
-        console.log(`Error from Child process: ${data.toString()}`);
+    child.on("error", (err) => {
+        console.log(`Error spawning child: ${err}`);
     });
 };
 
 /**
  * Util Function to get a random number from 0 to n
- * @param {*} arr 
- * @param {*} n 
+ * @param {*} arr
+ * @param {*} n
  * @returns number
  */
 const getRandom = (arr, n) => {
@@ -102,8 +96,8 @@ const toTitleCase = (phrase) => {
 
 /**
  * Util function to create a response object
- * @param {*} param0 
- * @returns 
+ * @param {*} param0
+ * @returns
  */
 const createResObjFormat = ({
     statusResult = "success",
@@ -117,6 +111,20 @@ const createResObjFormat = ({
         count: data.length,
     };
 };
+
+// Schedule Job for fetching data
+// TODO Async Await on scrapeData. Currently, fetching JSON is faster than scraping so some gets not updated in one run.
+const scheduledJob = schedule.scheduleJob("0 50 * * * *", () => {
+    scrapeData("boy-group");
+    scrapeData("girl-group");
+    scrapeData("idol");
+    scrapeSongs();
+
+    boyGroupJSON = JSON.parse(fs.readFileSync("./asset/boy-group.json"));
+    girlGroupJSON = JSON.parse(fs.readFileSync("./asset/girl-group.json"));
+    idolJSON = JSON.parse(fs.readFileSync("./asset/idol.json"));
+    songJSON = JSON.parse(fs.readFileSync("./asset/songs-data.json"));
+});
 
 
 ////////////////////////////////////////////////////////////////////////
